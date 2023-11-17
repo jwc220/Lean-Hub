@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEAN HUB</title>
+    <style>
+        /* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Add an active class to highlight the current page */
+.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Style the dropdown button to fit inside the topnav */
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a dark background on topnav links and the dropdown button on hover */
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #555;
+  color: white;
+}
+
+/* Add a grey background to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+  border-radius: 4%;
+  margin-left: 100px;
+}
+
+.next {
+  background-color: #04AA6D;
+  color: white;
+  border-radius: 4%;
+  margin-left: 100px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0.1rem 0;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+h3 {
+    font-size: 1rem;
+  padding-left: 20px;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+h4 {
+  font-size: 1rem;
+  padding-left: 20px;
+  margin-right: 100px;
+  margin-left: 100px;
+  font-weight: normal;
+} 
+
+.exercise {
+    background-color: #ddd;
+    padding: 8px 16px;
+}
+
+.bold { font-weight: bold; }
+
+.button {
+    font-size: 1rem;
+  padding-left: 20px;
+  margin-right: 100px;
+  margin-left: 100px;
+  font-weight: normal;
+  font-weight: bold; 
+}
+#myBtn {font-size: 1rem;
+    padding: auto;
+  border: none;
+  font-weight: normal;
+  font-weight: bold;}
+
+  #myBtn1 {font-size: 1rem;
+    padding: auto;
+  border: none;
+  font-weight: normal;
+  font-weight: bold;}
+
+  #more {display: none;}
+
+    </style>
+</head>
+
+
+<body>
+    <div class="topnav" id="myTopnav">
+      <a href="Home.html" class="active">Home</a>
+      <a href="Propositional Logic.html">Propositional Logic</a>
+      <a href="Exam Exercises.html">Exam Exercises</a>
+      <a href="Error Support.html">Lean Error Support</a>
+      <a href="AI Prompts.html">AI Prompts</a>
+      <a href="https://chat.openai.com/">ChatGPT</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+      </div>
+<p></p>
+      <h1>True and False</h1>
+      <p></p>
+      <h4>In predicate logic, the propositional constants ⊤ (true) and ⊥ (false) are governed by specific rules:</h4>
+      <p></p>
+      <H2>True Introduction (⊤ intro):</H2>
+      <p></p>
+      <ul>
+         <h4> <li>The true introduction rule produces a proof of ⊤ (true) in any context, indicating that "true" can be derived universally.</li></h4> 
+      </ul>
+      <p></p>
+      <h2>False Elimination (⊥ elim):</h2>
+      <p></p>
+      <ul>
+        <h4><li>From a proof of ⊥ (false), false elimination gives a proof of any proposition α, denoted as exfalso, emphasizing that anything follows from falsehood.</li></h4>
+      </ul>
+          <h4>The negation elimination theorem illustrates the application of false elimination, asserting that if there are proofs of both p and ¬p, any proposition q can be derived.</h4>
+    <p></p>
+    <h2>True Introduction:</h2>
+          <p></p>
+          <h4 class="exercise"><span class = "bold">Example:</span> Prove p → ⊤. In words, ‘anything implies true’.
+          <p></p>
+          In Lean: (h : p) : p → true :=
+          <p></p>
+          <span class="bold">Proof:</span> Assume h : p. Then ⊤ follows, from ⊤ intro.
+          <p></p>
+          In Lean:
+          <pre>
+            begin
+
+              assume h : p,
+
+              show p → true, from h.left,
+
+            end
+          </pre> 
+</h4>
+<p>
+</p>
+<a href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28h%20%3A%20p%29%20%3A%20p%20%E2%86%92%20true%20%3A%3D%20%20%20%0A%20%20%20%0A%20%20%20begin%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20assume%20h%20%3A%20p%2C%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20show%20p%20%E2%86%92%20true%2C%20from%20h.left%2C%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20end%0A%20%20%20%20%20%20%20%20%20%20%0A"
+ target = "_blank" previous">&laquo; If and Only If</a>
+
+          <p></p>
+
+    </script>
+
+    <h2>Negation Elimination:</h2>
+    <p></p>
+    <h4 class="exercise"><span class = "bold">Example:</span> Given h : ⊥, the proposition p follows.
+    <p></p>
+    In Lean: example (p : Sort u) (h : false) : p :=
+    <p></p>
+    <span class="bold">Proof:</span> We show p, from ⊥elim on h.    
+    <p></p>
+    In Lean: 
+    <p></p>
+    begin
+    <p></p>
+    from false.elim h,
+      <p></p>
+    end</h4>
+    <p></p>
+    <h4 class="exercise"><span class="bold">Exercise:</span> Given h1 : p and h2 : ¬p, the proposition q follows.
+    <p></p>
+    In Lean: def absurd {p : Prop} {q : Sort u} (h₁ : p) (h₂ : ¬p) : q := 
+    </h4>
+    <p></p>
+
+    <h4 class="exercise"><span class="bold"><button onclick="myFunction()" id="myBtn">Reveal Solution</button></span><span id="dots"> ...</span>
+        <p><span id="more">Recall ¬p is shorthand for p → ⊥. Thus, we have h3 : ⊥ from →elim on h2
+            and h1. We show q, from ⊥elim on h3. </span></p></h4>
+       
+
+<script>
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Reveal Solution"; 
+    moreText.style.display = "none";
+  } 
+  else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Conceal Solution"; 
+    moreText.style.display = "inline";
+  }
+}
+</script>
+<p></p>
+<a href="If and Only If.html" class="previous">&laquo; If and Only If</a>
+<a href="Exam Exercises.html" class="next">Exam Exercise &raquo;</a>
+        <p></p>
+    </body>
+</body>
+
+
+</html>
+
+
+<!-- Lean game maker -->
