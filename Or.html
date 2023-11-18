@@ -217,6 +217,16 @@ h4 {
   #more {display: none;}
   #more1 {display: none;}
 
+  .inlean {
+  background-color: #04AA6D;
+  color: white;
+  border-radius: 4%;
+}
+
+.hljs-sorry {
+  color: blue;
+}
+
     </style>
 </head>
 
@@ -250,30 +260,30 @@ h4 {
         <h4><li>Given a proof of α ∨ β, a proof of γ on the assumption of α, and a proof of γ on the assumption of β, Or Elimination (∨ elim) produces a proof of γ.</li></h4>
       </ul>
           <h4>These rules are applied to construct disjunctions or deduce propositions from disjunctions. Problems involve using these rules to derive propositions and identify errors in arguments.</h4>
-      <p></p>
-    <a href="Propositional Logic.html" class="previous">&laquo; Propositional Logic</a>
     <p></p>
     <h2>Or Introduction:</h2>
           <p></p>
           <h4 class="exercise"><span class = "bold">Example:</span> Given h : p, derive p ∨ q.
           <p></p>
-          In Lean: (h : p) : p ∨ q :=
-          <p></p>
           <span class="bold">Proof:</span> The result follows from ∨ introL on h.
           <p></p>
-          In Lean: 
-          <p></p>
-          begin
-          <p></p>
-          from or.inl h₁,
-            <p></p>
-          end</h4>
-          <p></p>
-          <h4 class="exercise"><span class="bold">Exercise:</span> Given h : p ∧ q, derive r ∨ (p ∧ q)</h4>
-                <p></p>
+          <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20%3A%20Prop%29%20%28h%20%3A%20p%29%20%3A%20p%20%E2%88%A8%20q%20%3A%3D%0A%0Abegin%0A%0A%20%20from%20or.inl%20h%2C%0A%20%20%20%20%20%20%20%20%20%20%0Aend"
+target = "_blank" previous">Try in Lean</a>
+<p></p>
+<pre><code class="language-html"></code><span class="hljs-sorry">example</span> (p q : <span class="hljs-sorry">Prop</span>) (h : p) : p ∨ q :=
 
-      <h4 class="exercise"><span class="bold"><button onclick="myFunction1()" id="myBtn1">Reveal Solution</button></span><span id="dots1"> ...</span>
-       <p></p> <span id="more1">The result follows from ∨ introR on h.</span></h4>
+<span class="hljs-sorry">begin</span>
+
+  <span class="hljs-sorry">from</span> or.inl h,
+ 
+<span class="hljs-sorry">end</span></code></pre>
+</h4>
+<p></p>
+<h4 class="exercise"><span class="bold">Exercise:</span> Given h : p ∧ q, derive r ∨ (p ∧ q)</h4>
+<p></p>
+
+<h4 class="exercise"><span class="bold"><button onclick="myFunction1()" id="myBtn1">Reveal Solution</button></span><span id="dots1"> ...</span>
+<p></p> <span id="more1">The result follows from ∨ introR on h.</span></h4>
        
 
 <script>
@@ -311,22 +321,27 @@ function myFunction1() {
     <p></p>
     <ol>2. Assume h3 : q. We show q∨ p from ∨introL on h3.</ol>
 </ul>
+<p></p>
+    <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%20%28p%20q%20%3A%20Prop%29%20%28h%20%3A%20p%20%E2%88%A8%20q%29%20%3A%20q%20%E2%88%A8%20p%20%3A%3D%0A%0Abegin%0A%0A%20%20have%20h%E2%82%81%20%3A%20p%20%E2%86%92%20%28q%20%E2%88%A8%20p%29%2C%0A%20%20%7B%20assume%20k%20%3A%20p%2C%0A%20%20%20%20show%20q%20%E2%88%A8%20p%2C%20from%20or.inr%20k%2C%20%7D%2C%0A%20%0A%20%20have%20h%E2%82%82%20%3A%20q%20%E2%86%92%20%28q%20%E2%88%A8%20p%29%2C%0A%20%20%7B%20assume%20k%20%3A%20q%2C%0A%20%20%20%20show%20q%20%E2%88%A8%20p%2C%20from%20or.inl%20k%2C%20%20%7D%2C%0A%20%0A%20%20show%20q%20%E2%88%A8%20p%2C%20from%20or.elim%20h%20h%E2%82%81%20h%E2%82%82%2C%0A%20%20%0Aend%0A%20"
+    target = "_blank" previous">Try in Lean</a>
     <p></p>
-    In Lean: 
+<pre><code class="language-html"></code><span class="hljs-sorry">example</span> (p q : <span class="hljs-sorry">Prop</span>) (h : p ∨ q) : q ∨ p :=
+    
+<span class="hljs-sorry">begin</span>
+    
+ <span class="hljs-sorry">have</span> h₁ : p → (q ∨ p),
+  { <span class="hljs-sorry">assume</span> k : p,
+    <span class="hljs-sorry">show</span> q ∨ p, <span class="hljs-sorry">from</span> or.inr k, },
+
+  <span class="hljs-sorry">have</span> h₂ : q → (q ∨ p),
+  { <span class="hljs-sorry">assume</span> k : q,
+     <span class="hljs-sorry">show</span> q ∨ p, <span class="hljs-sorry">from</span> or.inl k, },
+
+  <span class="hljs-sorry">show</span> q ∨ p, <span class="hljs-sorry">from</span> or.elim h h₁ h₂,
+
+ <span class="hljs-sorry">end</span></code></pre>
+    </h4>
     <p></p>
-    begin
-    <p></p>
-    cases h with h₂ h₃,
-      <p></p>
-      { given h₂ : p,
-      <p></p>
-      show q ∨ p, from or.inr h₂, },
-      <p></p>
-      { given h₃ : q,
-        <p></p>
-        show q ∨ p, from or.inl h₃, },
-        <p></p>
-    end</h4>
     <p></p>
     <h4 class="exercise"><span class="bold">Exercise:</span> Prove (p ∧ q) ∨ (r ∧ p).</h4>
     <p></p>
@@ -367,6 +382,18 @@ function myFunction() {
 <a href="EqLev1.html" class="previous">&laquo; Implication</a>
 <a href="If and Only If.html" class="next">If and Only If &raquo;</a>
         <p></p>
+
+        <!-- Highlight -->
+<link rel="stylesheet" href="/path/to/styles/default.min.css">
+<script src="/path/to/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<!-- Highlight Lean -->
+<script type="text/javascript" src="/path/to/highlight.min.js"></script>
+<script type="text/javascript" charset="UTF-8"
+  src="/path/to/highlightjs-lean/dist/lean.min.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+</script>
     </body>
 </body>
 

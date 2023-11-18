@@ -210,6 +210,16 @@ h4 {
 
   #more1 {display: none;}
 
+  .inlean {
+  background-color: #04AA6D;
+  color: white;
+  border-radius: 4%;
+}
+
+.hljs-sorry {
+  color: blue;
+}
+
     </style>
 </head>
 
@@ -241,19 +251,22 @@ h4 {
       <p></p>
       <h4 class="exercise"><span class = "bold">Example:</span> Given h₁ : p → (q ∧ r) and h₂ : p, derive r.
       <p></p>
-      In Lean: (h₁ : p → (q ∧ r)) (h₂ : p) : r :=
-      <p></p>
       <span class="bold">Proof:</span> We have h₃ : q ∧ r from →elim h₁, h₂. The result follows from ∧ elimR h₃.
       <p></p>
-      In Lean: 
-      <p></p>
-      begin
-      <p></p>
-      have h₃ : q ∧ r, from h₁ h₂
-        <p></p>
-        show r, from h₃.right,
-        <p></p>
-      end</h4>
+      <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20r%20%3A%20Prop%29%20%28h%E2%82%81%20%3A%20p%20%E2%86%92%20%28q%20%E2%88%A7%20r%29%29%20%28h%E2%82%82%20%3A%20p%29%20%3A%20r%20%3A%3D%0A%0Abegin%0A%0A%20%20have%20h%E2%82%83%20%3A%20q%20%E2%88%A7%20r%2C%20from%20h%E2%82%81%20h%E2%82%82%2C%0A%0A%20%20show%20r%2C%20from%20h%E2%82%83.right%2C%0A%0Aend%0A%0A%0A"
+target = "_blank" previous">Try in Lean</a>
+<pre><code class="language-html">
+<span class="hljs-sorry">example</span> (p q r : Prop) (h₁ : p → (q ∧ r)) (h₂ : p) : r :=
+
+<span class="hljs-sorry">begin</span>
+
+  <span class="hljs-sorry">have</span> h₃ : q ∧ r, <span class="hljs-sorry">from</span> h₁ h₂
+  
+  <span class="hljs-sorry">show</span> r, <span class="hljs-sorry">from</span> h₃.right,
+
+<span class="hljs-sorry">end</span>
+    </code></pre>
+    </h4>
       <p></p>
       <h4 class="exercise"><span class="bold">Exercise:</span> Let p, q, and r be propositions. Assuming h₁ : p → q ∧ r and h₂ : p, we have q.</h4>
       <p></p>
@@ -284,22 +297,25 @@ function myFunction1() {
 
 <h2>Implication Introduction:</h2>
 <p></p>
-<h4 class="exercise"><span class = "bold">Example:</span>Prove (p ∧ q) → p.
-<p></p>
-In Lean: (p ∧ q) → p :=
+<h4 class="exercise"><span class = "bold">Example:</span> Prove (p ∧ q) → p.
 <p></p>
 <span class="bold">Proof:</span> Assume h1 : p ∧ q. Then p follows from ∧ elimL on h.
 <p></p>
-In Lean: 
+<a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%3A%20%28p%20%E2%88%A7%20q%29%20%E2%86%92%20p%20%3A%3D%0A%0Abegin%0A%0A%20%20assume%20h%20%3A%20p%20%E2%88%A7%20q%2C%0A%0A%20%20show%20p%2C%20from%20h.left%2C%0A%20%20%0Aend"
+target = "_blank" previous">Try in Lean</a>
+<pre><code class="language-html">
+<span class="hljs-sorry">example</span> : (p ∧ q) → p :=
+  
+<span class="hljs-sorry">begin</span>
+  
+  <span class="hljs-sorry">assume</span> h : p ∧ q,
+    
+  <span class="hljs-sorry">show</span> p, <span class="hljs-sorry">from</span> h.left,
+  
+<span class="hljs-sorry">end</span></code></pre>
+</h4>
 <p></p>
-begin
-<p></p>
-assume h : p ∧ q,
-  <p></p>
-  show p, from h.left,
-  <p></p>
-end</h4>
-<p></p>
+
 <h4 class="exercise"><span class="bold">Exercise:</span> Prove (p ∧ q) → (q ∧ p).</h4>
 
 <p></p>
@@ -333,6 +349,18 @@ moreText.style.display = "inline";
 <a href="Or.html" class="next">Or &raquo;</a>
     <p></p>
 </body>
+
+<!-- Highlight -->
+<link rel="stylesheet" href="/path/to/styles/default.min.css">
+<script src="/path/to/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<!-- Highlight Lean -->
+<script type="text/javascript" src="/path/to/highlight.min.js"></script>
+<script type="text/javascript" charset="UTF-8"
+  src="/path/to/highlightjs-lean/dist/lean.min.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+</script>
 
 
 </html>

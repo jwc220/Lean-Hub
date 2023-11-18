@@ -153,6 +153,12 @@ a:hover {
   margin-left: 100px;
 }
 
+.inlean {
+  background-color: #04AA6D;
+  color: white;
+  border-radius: 4%;
+}
+
 h1,
 h2,
 h3,
@@ -201,6 +207,12 @@ h4 {
   font-weight: bold;}
   #more1 {display: none;}
 
+
+.hljs-sorry {
+  color: blue;
+}
+
+
     </style>
 </head>
 
@@ -237,19 +249,22 @@ h4 {
 <p></p>
 <h4 class="exercise"><span class = "bold">Example:</span> Given h : (p ∧ q) ∧ r, derive q.
 <p></p>
-In Lean: (p q r : Prop) (h : (p ∧ q) ∧ r ) : q :=
-<p></p>
 <span class="bold">Proof:</span> We have h2 : q ∧ r, from ∧ elimL on h. The result, to show q, follows from ∧ elimR on h2.
 <p></p>
-In Lean: 
+<a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20r%20%3A%20Prop%29%20%28h%20%3A%20%28p%20%E2%88%A7%20q%29%20%E2%88%A7%20r%20%29%20%3A%20q%20%3A%3D%0A%0Abegin%0A%0A%20%20have%20h%E2%82%82%20%3A%20p%20%E2%88%A7%20q%2C%20from%20h.left%2C%0A%20%0A%20%20show%20q%2C%20from%20h%E2%82%82.right%2C%0A%20%0A%20end"
+target = "_blank" previous">Try in Lean</a>
 <p></p>
-begin
-<p></p>
- have h₂ : q ∧ r, from h.right,
-  <p></p>
- show q, from h₂.left,
-  <p></p>
-end</h4>
+<pre><code class="language-html"></code><span class="hljs-sorry">example</span> (p q r : <span class="hljs-sorry">Prop</span>) (h : (p ∧ q) ∧ r ) : q :=
+
+<span class="hljs-sorry">begin</span>
+
+  <span class="hljs-sorry">have</span> h₂ : q ∧ r, <span class="hljs-sorry">from</span> h.right,
+ 
+  <span class="hljs-sorry">show</span> q, <span class="hljs-sorry">from</span> h₂.left,
+ 
+<span class="hljs-sorry">end</span></code></pre>
+
+</h4>
 <p></p>
 <h4 class="exercise"><span class="bold">Exercise:</span> Let p, q, r be propositions.You are given h: p ∧ (q ∧ r). One can prove r ∧ p.</h4>
 <p></p>
@@ -275,6 +290,20 @@ end</h4>
       }
     }
     </script>
+
+
+<!-- Highlight -->
+<link rel="stylesheet" href="/path/to/styles/default.min.css">
+<script src="/path/to/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<!-- Highlight Lean -->
+<script type="text/javascript" src="/path/to/highlight.min.js"></script>
+<script type="text/javascript" charset="UTF-8"
+  src="/path/to/highlightjs-lean/dist/lean.min.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+</script>
+
 <p></p>
 <a href="Propositional Logic.html" class="previous">&laquo; Propositional Logic</a>
 <a href="EqLev1.html" class="next">Implication &raquo;</a>

@@ -153,6 +153,12 @@ a:hover {
   margin-left: 100px;
 }
 
+.inlean {
+  background-color: #04AA6D;
+  color: white;
+  border-radius: 4%;
+}
+
 h1,
 h2,
 h3,
@@ -216,6 +222,10 @@ h4 {
 
   #more {display: none;}
 
+  .hljs-sorry {
+  color: blue;
+}
+
     </style>
 </head>
 
@@ -252,46 +262,42 @@ h4 {
           <p></p>
           <h4 class="exercise"><span class = "bold">Example:</span> Prove p → ⊤. In words, ‘anything implies true’.
           <p></p>
-          In Lean: (h : p) : p → true :=
-          <p></p>
           <span class="bold">Proof:</span> Assume h : p. Then ⊤ follows, from ⊤ intro.
           <p></p>
-          In Lean:
-          <pre>
-            begin
+          <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28h%20%3A%20p%29%20%3A%20p%20%E2%86%92%20true%20%3A%3D%20%20%20%0A%20%20%20%0Abegin%0A%20%0A%20%20assume%20h%20%3A%20p%2C%0A%20%20show%20p%20%E2%86%92%20true%2C%20from%20h.left%2C%0A%0Aend%0A%20%20%20%20%20%20%20%20%20%20%0A"
+ target = "_blank" previous">Try in Lean</a>
+ <pre><code class="language-html"><span class="hljs-sorry">example</span> (h : p) : p → true :=
 
-              assume h : p,
+<span class="hljs-sorry">begin</span>
 
-              show p → true, from h.left,
+  <span class="hljs-sorry">assume</span> h : p,
 
-            end
-          </pre> 
+  <span class="hljs-sorry">show</span> p → true, <span class="hljs-sorry">from</span> h.left,
+
+<span class="hljs-sorry">end</span>
+</code></pre>
 </h4>
-<p>
-</p>
-<a href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28h%20%3A%20p%29%20%3A%20p%20%E2%86%92%20true%20%3A%3D%20%20%20%0A%20%20%20%0A%20%20%20begin%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20assume%20h%20%3A%20p%2C%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20show%20p%20%E2%86%92%20true%2C%20from%20h.left%2C%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20end%0A%20%20%20%20%20%20%20%20%20%20%0A"
- target = "_blank" previous">&laquo; If and Only If</a>
-
-          <p></p>
-
-    </script>
+<p></p>
 
     <h2>Negation Elimination:</h2>
     <p></p>
     <h4 class="exercise"><span class = "bold">Example:</span> Given h : ⊥, the proposition p follows.
     <p></p>
-    In Lean: example (p : Sort u) (h : false) : p :=
-    <p></p>
     <span class="bold">Proof:</span> We show p, from ⊥elim on h.    
     <p></p>
-    In Lean: 
+    <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20%3A%20Prop%29%20%28h%20%3A%20false%29%20%3A%20p%20%3A%3D%0A%0Abegin%0A%0A%20%20from%20false.elim%20h%2C%0A%20%20%0Aend"
+    target = "_blank" previous">Try in Lean</a>
+    <pre><code class="language-html"><span class="hljs-sorry">example</span> (p : <span class="hljs-sorry">Prop</span>) (h : false) : p :=
+   
+<span class="hljs-sorry">begin</span>
+
+  <span class="hljs-sorry">from</span> false.elim h,
+
+<span class="hljs-sorry">end</span>
+   </code></pre>
+   </h4>
     <p></p>
-    begin
-    <p></p>
-    from false.elim h,
-      <p></p>
-    end</h4>
-    <p></p>
+
     <h4 class="exercise"><span class="bold">Exercise:</span> Given h1 : p and h2 : ¬p, the proposition q follows.
     <p></p>
     In Lean: def absurd {p : Prop} {q : Sort u} (h₁ : p) (h₂ : ¬p) : q := 
@@ -325,6 +331,18 @@ function myFunction() {
 <a href="If and Only If.html" class="previous">&laquo; If and Only If</a>
 <a href="Exam Exercises.html" class="next">Exam Exercise &raquo;</a>
         <p></p>
+
+                <!-- Highlight -->
+<link rel="stylesheet" href="/path/to/styles/default.min.css">
+<script src="/path/to/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<!-- Highlight Lean -->
+<script type="text/javascript" src="/path/to/highlight.min.js"></script>
+<script type="text/javascript" charset="UTF-8"
+  src="/path/to/highlightjs-lean/dist/lean.min.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+</script>
     </body>
 </body>
 

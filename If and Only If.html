@@ -217,6 +217,16 @@ h4 {
   #more {display: none;}
   #more1 {display: none;}
 
+  .inlean {
+  background-color: #04AA6D;
+  color: white;
+  border-radius: 4%;
+}
+
+.hljs-sorry {
+  color: blue;
+}
+
     </style>
 </head>
 
@@ -255,21 +265,25 @@ h4 {
           <p></p>
           <h4 class="exercise"><span class = "bold">Example:</span> Prove p on the assumptions h₁ : p ↔ q and h₂ : q.
           <p></p>
-          In Lean: (h₁ : p ↔ q) (h₂ : q) : p :=
-          <p></p>
           <span class="bold">Proof:</span> We have h3 : q → p by right iff elimination on h1. From h3, it suffices to show q, which follows from h2.
           <p></p>
-          In Lean: 
+          <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20%3A%20Prop%29%20%28h%E2%82%81%20%3A%20p%20%E2%86%94%20q%29%20%28h%E2%82%82%20%3A%20q%29%20%3A%20p%20%3A%3D%0A%0Abegin%0A%0A%20%20have%20h%E2%82%83%20%3A%20q%20%E2%86%92%20p%2C%20from%20iff.elim_right%20h%E2%82%81%2C%0A%20%20apply%20h%E2%82%83%2C%0A%0A%20%20show%20q%2C%20from%20h%E2%82%82%2C%0A%0Aend"
+          target = "_blank" previous">Try in Lean</a>
           <p></p>
-          begin
-          <p></p>
-          have h₃ : q → p, from iff.elim_right h₁,
-          <p></p>
-          apply h₃,
-          <p></p>
-          show q, from h₂,
-            <p></p>
-          end</h4>
+<pre><code class="language-html"></code><span class="hljs-sorry">example</span> (p q : <span class="hljs-sorry">Prop</span>) (h₁ : p ↔ q) (h₂ : q) : p :=
+          
+<span class="hljs-sorry">begin</span>
+          
+  <span class="hljs-sorry">have</span> h₃ : q → p, <span class="hljs-sorry">from</span> iff.elim_right h₁,
+  apply h₃,
+
+  <span class="hljs-sorry">show</span> q, <span class="hljs-sorry">from</span> h₂,
+
+<span class="hljs-sorry">end</span></code></pre>
+          </h4>
+    
+
+
           <p></p>
           <h4 class="exercise"><span class="bold">Exercise:</span> Let p, q and r be propositions. Then q follows from the assumptions h : p ↔ (q ∧ r) and k : p.</h4>
           <p></p>
@@ -310,22 +324,24 @@ h4 {
     <p></p>
     <h4 class="exercise"><span class = "bold">Example:</span> Given h : p ↔ q, derive q ↔ p.
     <p></p>
-    In Lean: lemma (h : p ↔ q) : q ↔ p :=
-    <p></p>
     <span class="bold">Proof:</span> We have h2 : p → q and h3 : q → p by ↔ elimL and ↔ elimR on h. The result
     follows by ↔intro on h3 and h2.
     <p></p>
-    In Lean: 
+    <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20%3A%20Prop%29%20%28h%20%3A%20p%20%E2%86%94%20q%29%20%3A%20q%20%E2%86%94%20p%20%3A%3D%0A%0Abegin%0A%0A%20%20have%20h%E2%82%82%20%3A%20q%20%E2%86%92%20p%2C%20from%20iff.elim_right%20h%2C%0A%0A%20%20have%20h%E2%82%83%20%3A%20p%20%E2%86%92%20q%2C%20from%20iff.elim_left%20h%2C%0A%0A%20%20show%20q%20%E2%86%94%20p%2C%20from%20iff.intro%20h%E2%82%82%20h%E2%82%83%2C%0A%0Aend"
+    target = "_blank" previous">Try in Lean</a>
     <p></p>
-    begin
-    <p></p>
-    have h₂ : q → p, from iff.elim_left h₁,
-      <p></p>
-      have h₃ : p → q, from iff.elim_right h₁,
-      <p></p>
-      show q ↔ p from iff.intro h₁ h₂,
-      <p></p>
-    end</h4>
+<pre><code class="language-html"></code><span class="hljs-sorry">example</span> (p q : <span class="hljs-sorry">Prop</span>) (h : p ↔ q) : q ↔ p :=
+    
+<span class="hljs-sorry">begin</span>
+    
+  <span class="hljs-sorry">have</span> h₂ : q → p, <span class="hljs-sorry">from</span> iff.elim_right,
+
+  <span class="hljs-sorry">have</span> h₃ : p → q, <span class="hljs-sorry">from</span> iff.elim_left,
+
+  <span class="hljs-sorry">show</span> q ↔ p, <span class="hljs-sorry">from</span> iff.intro h₂ h₃,
+
+<span class="hljs-sorry">end</span></code></pre>
+    </h4>
     <p></p>
     <h4 class="exercise"><span class="bold">Exercise:</span> Let p and q be propositions. Then (p ∨ q) ↔ (q ∨ p)</h4>
     <p></p>
@@ -365,6 +381,18 @@ function myFunction() {
 <a href="Or.html" class="previous">&laquo; Or</a>
 <a href="True and False.html" class="next">True and False &raquo;</a>
         <p></p>
+
+                <!-- Highlight -->
+<link rel="stylesheet" href="/path/to/styles/default.min.css">
+<script src="/path/to/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<!-- Highlight Lean -->
+<script type="text/javascript" src="/path/to/highlight.min.js"></script>
+<script type="text/javascript" charset="UTF-8"
+  src="/path/to/highlightjs-lean/dist/lean.min.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+</script>
     </body>
 </body>
 
