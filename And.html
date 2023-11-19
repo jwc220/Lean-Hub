@@ -254,7 +254,7 @@ h4 {
 <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20r%20%3A%20Prop%29%20%28h%20%3A%20%28p%20%E2%88%A7%20q%29%20%E2%88%A7%20r%20%29%20%3A%20q%20%3A%3D%0A%0Abegin%0A%0A%20%20have%20h%E2%82%82%20%3A%20p%20%E2%88%A7%20q%2C%20from%20h.left%2C%0A%20%0A%20%20show%20q%2C%20from%20h%E2%82%82.right%2C%0A%20%0A%20end"
 target = "_blank" previous">Try in Lean</a>
 <p></p>
-<pre><code class="language-html"></code><span class="hljs-sorry">example</span> (p q r : <span class="hljs-sorry">Prop</span>) (h : (p ∧ q) ∧ r ) : q :=
+<pre><code class="language-html"><span class="hljs-sorry">example</span> (p q r : <span class="hljs-sorry">Prop</span>) (h : (p ∧ q) ∧ r ) : q :=
 
 <span class="hljs-sorry">begin</span>
 
@@ -266,10 +266,33 @@ target = "_blank" previous">Try in Lean</a>
 
 </h4>
 <p></p>
-<h4 class="exercise"><span class="bold">Exercise:</span> Let p, q, r be propositions.You are given h: p ∧ (q ∧ r). One can prove r ∧ p.</h4>
+<h4 class="exercise"><span class="bold">Exercise:</span> Let p, q, r be propositions.You are given h: p ∧ (q ∧ r). One can prove r ∧ p.
+<p></p>
+<a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20r%20%3A%20Prop%29%20%20%28h%3A%20p%20%E2%88%A7%20%28q%20%E2%88%A7%20r%29%29%3A%20r%20%E2%88%A7%20p%20%3A%3D%20%0A%0Abegin%20%0A%20%20sorry%0Aend"
+target = "_blank" previous">Try in Lean</a> <pre><code class="language-html"><span class="hljs-sorry">example</span> (p q r : <span class="hljs-sorry">Prop</span>) (h: p ∧ (q ∧ r)): r ∧ p := </code></pre>
+
+</h4>
+
+
+
 <p></p>
           <h4 class="exercise"><span class="bold"><button onclick="myFunction1()" id="myBtn1">Reveal Solution</button></span><span id="dots1"> ...</span>
-            <p><span id="more1">We have h1 : q ∧ r, from ∧ elimR on h and h2 : p, from ∧ elimL on h. We have h3 : r, from ∧ elimR on h1. The result, to show r ∧ p, follows from ∧ intro on h2 and h3.</span></p></h4>
+            <div id = "more1">
+            <p>We have h1 : q ∧ r, from ∧ elimR on h and h2 : p, from ∧ elimL on h. We have h3 : r, from ∧ elimR on h1. The result, to show r ∧ p, follows from ∧ intro on h2 and h3.
+            <p></p>
+            <Span class="bold">In Lean:</Span>
+<pre><code class="language-html"><span class="hljs-sorry">begin</span>
+
+  <span class="hljs-sorry">have</span> h1 : q ∧ r, <span class="hljs-sorry">from</span> h.right,
+
+  <span class="hljs-sorry">have</span> h2 : p, <span class="hljs-sorry">from</span> h.left,
+                 
+  <span class="hljs-sorry">have</span> h3 : p, <span class="hljs-sorry">from</span> h1.right,
+
+  <span class="hljs-sorry">from</span> and.intro h3 h2,
+                 
+<span class="hljs-sorry">end</span></code></pre></div>
+</p></h4>
            
     
     <script>
@@ -306,7 +329,7 @@ target = "_blank" previous">Try in Lean</a>
 
 <p></p>
 <a href="Propositional Logic.html" class="previous">&laquo; Propositional Logic</a>
-<a href="EqLev1.html" class="next">Implication &raquo;</a>
+<a href="Implication.html" class="next">Implication &raquo;</a>
       <p></p>
 </body>
 

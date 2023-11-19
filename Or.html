@@ -279,11 +279,23 @@ target = "_blank" previous">Try in Lean</a>
 <span class="hljs-sorry">end</span></code></pre>
 </h4>
 <p></p>
-<h4 class="exercise"><span class="bold">Exercise:</span> Given h : p ∧ q, derive r ∨ (p ∧ q)</h4>
+<h4 class="exercise"><span class="bold">Exercise:</span> Given h : p ∧ q, derive r ∨ (p ∧ q) <p></p>
+<a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20r%20%3A%20Prop%29%20%28h%20%3A%20p%20%E2%88%A7%20q%29%20%3A%20%28r%20%E2%88%A8%20%28p%20%E2%88%A7%20q%29%29%20%3A%3D%0A%0Abegin%0A%0A%20%20sorry%0A%0Aend"
+target = "_blank" previous">Try in Lean</a>
+<pre><code class="language-html"><span class="hljs-sorry">example</span> (p q r : <span class="hljs-sorry">Prop</span>) (h : p ∧ q) : (r ∨ (p ∧ q)) := </code></pre>
+</h4>
 <p></p>
 
 <h4 class="exercise"><span class="bold"><button onclick="myFunction1()" id="myBtn1">Reveal Solution</button></span><span id="dots1"> ...</span>
-<p></p> <span id="more1">The result follows from ∨ introR on h.</span></h4>
+<p></p> <div id="more1">The result follows from ∨ introR on h.
+
+<pre><code class="language-html"><span class="hljs-sorry">begin</span>
+  
+  <span class="hljs-sorry">from</span> or.inr h, 
+          
+<span class="hljs-sorry">end</span></code></pre>
+
+</div></h4>
        
 
 <script>
@@ -379,7 +391,7 @@ function myFunction() {
 }
 </script>
 <p></p>
-<a href="EqLev1.html" class="previous">&laquo; Implication</a>
+<a href="Implication.html" class="previous">&laquo; Implication</a>
 <a href="If and Only If.html" class="next">If and Only If &raquo;</a>
         <p></p>
 

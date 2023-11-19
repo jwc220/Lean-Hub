@@ -256,7 +256,7 @@ h4 {
       <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20r%20%3A%20Prop%29%20%28h%E2%82%81%20%3A%20p%20%E2%86%92%20%28q%20%E2%88%A7%20r%29%29%20%28h%E2%82%82%20%3A%20p%29%20%3A%20r%20%3A%3D%0A%0Abegin%0A%0A%20%20have%20h%E2%82%83%20%3A%20q%20%E2%88%A7%20r%2C%20from%20h%E2%82%81%20h%E2%82%82%2C%0A%0A%20%20show%20r%2C%20from%20h%E2%82%83.right%2C%0A%0Aend%0A%0A%0A"
 target = "_blank" previous">Try in Lean</a>
 <pre><code class="language-html">
-<span class="hljs-sorry">example</span> (p q r : Prop) (h₁ : p → (q ∧ r)) (h₂ : p) : r :=
+<span class="hljs-sorry">example</span> (p q r : <span class="hljs-sorry">Prop</span>) (h₁ : p → (q ∧ r)) (h₂ : p) : r :=
 
 <span class="hljs-sorry">begin</span>
 
@@ -265,14 +265,26 @@ target = "_blank" previous">Try in Lean</a>
   <span class="hljs-sorry">show</span> r, <span class="hljs-sorry">from</span> h₃.right,
 
 <span class="hljs-sorry">end</span>
-    </code></pre>
-    </h4>
+    </code></pre></h4>
       <p></p>
-      <h4 class="exercise"><span class="bold">Exercise:</span> Let p, q, and r be propositions. Assuming h₁ : p → q ∧ r and h₂ : p, we have q.</h4>
+      <h4 class="exercise"><span class="bold">Exercise:</span> Let p, q, and r be propositions. Assuming h₁ : p → q ∧ r and h₂ : p, we have q.
       <p></p>
+      <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20r%20%3A%20Prop%29%20%28h1%3A%20p%20%E2%86%92%20q%20%E2%88%A7%20r%29%20%28h2%3A%20p%29%3A%20q%20%3A%3D%0A%0Abegin%0A%0A%20%20sorry%0A%0Aend"
+target = "_blank" previous">Try in Lean</a>
+<pre><code class="language-html"><span class="hljs-sorry">example</span> (p q r : <span class="hljs-sorry">Prop</span>) (h1: p → q ∧ r) (h2: p): q :=</code></pre>
+</h4>
+        <p></p>
 
       <h4 class="exercise"><span class="bold"><button onclick="myFunction1()" id="myBtn1">Reveal Solution</button></span><span id="dots1"> ...</span>
-        <p><span id="more1">We have h₃ : q ∧ r from →elim h₁, h₂. The result follows from ∧ elimL h₃</span></p></h4>
+        <p><div id="more1">We have h₃ : q ∧ r from →elim h₁, h₂. The result follows from ∧ elimL h₃
+<pre><code class="language-html"><span class="hljs-sorry">begin</span>
+
+  <span class="hljs-sorry">have</span> h3 : q ∧ r, <span class="hljs-sorry">from</span> h1 h2,
+
+  <span class="hljs-sorry">show</span> q, <span class="hljs-sorry">from</span> h3.left,
+
+<span class="hljs-sorry">end</span></code></pre>
+</div></p></h4>
        
 
 <script>
@@ -316,14 +328,32 @@ target = "_blank" previous">Try in Lean</a>
 </h4>
 <p></p>
 
-<h4 class="exercise"><span class="bold">Exercise:</span> Prove (p ∧ q) → (q ∧ p).</h4>
+<h4 class="exercise"><span class="bold">Exercise:</span> Prove (p ∧ q) → (q ∧ p).
+  <p></p>
+  <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20%3A%20Prop%29%20%3A%20%28p%20%E2%88%A7%20q%29%20%E2%86%92%20%28q%20%E2%88%A7%20p%29%20%3A%3D%0A%0Abegin%0A%0A%20%20sorry%0A%0Aend"
+target = "_blank" previous">Try in Lean</a>
+<pre><code class="language-html"><span class="hljs-sorry">example</span> (p q : <span class="hljs-sorry">Prop</span>) : (p ∧ q) → (q ∧ p) :=</code></pre></h4>
 
 <p></p>
 
 <h4 class="exercise"><span class="bold"><button onclick="myFunction()" id="myBtn">Reveal Solution</button></span><span id="dots"> ...</span>
-    <p><span id="more">Assume h : p∧q. We must show q∧ p. We have h2 : p, from ∧elimL h and
-        h3 : q, from ∧elimR h. The result follows from ∧intro h3, h2.</span></p></h4>
-   
+    <p><div id="more">Assume h : p∧q. We must show q∧ p. We have h2 : p, from ∧elimL h and
+        h3 : q, from ∧elimR h. The result follows from ∧intro h3, h2.
+
+<pre><code class="language-html"><span class="hljs-sorry">begin</span>
+
+  <span class="hljs-sorry">assume</span> h : p ∧ q,
+
+    <span class="hljs-sorry">have</span> h1: p, <span class="hljs-sorry">from</span> h.left,
+
+    <span class="hljs-sorry">have</span> h2: q, <span class="hljs-sorry">from</span> h.right,
+
+  <span class="hljs-sorry">from</span> and.intro h2 h1,  
+        
+<span class="hljs-sorry">end</span></code></pre>
+      
+      </div></p></h4>
+
 
 <script>
 function myFunction() {
