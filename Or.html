@@ -337,7 +337,7 @@ function myFunction1() {
     <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%20%28p%20q%20%3A%20Prop%29%20%28h%20%3A%20p%20%E2%88%A8%20q%29%20%3A%20q%20%E2%88%A8%20p%20%3A%3D%0A%0Abegin%0A%0A%20%20have%20h%E2%82%81%20%3A%20p%20%E2%86%92%20%28q%20%E2%88%A8%20p%29%2C%0A%20%20%7B%20assume%20k%20%3A%20p%2C%0A%20%20%20%20show%20q%20%E2%88%A8%20p%2C%20from%20or.inr%20k%2C%20%7D%2C%0A%20%0A%20%20have%20h%E2%82%82%20%3A%20q%20%E2%86%92%20%28q%20%E2%88%A8%20p%29%2C%0A%20%20%7B%20assume%20k%20%3A%20q%2C%0A%20%20%20%20show%20q%20%E2%88%A8%20p%2C%20from%20or.inl%20k%2C%20%20%7D%2C%0A%20%0A%20%20show%20q%20%E2%88%A8%20p%2C%20from%20or.elim%20h%20h%E2%82%81%20h%E2%82%82%2C%0A%20%20%0Aend%0A%20"
     target = "_blank" previous">Try in Lean</a>
     <p></p>
-<pre><code class="language-html"></code><span class="hljs-sorry">example</span> (p q : <span class="hljs-sorry">Prop</span>) (h : p ∨ q) : q ∨ p :=
+<pre><code class="language-html"><span class="hljs-sorry">example</span> (p q : <span class="hljs-sorry">Prop</span>) (h : p ∨ q) : q ∨ p :=
     
 <span class="hljs-sorry">begin</span>
     
@@ -355,7 +355,12 @@ function myFunction1() {
     </h4>
     <p></p>
     <p></p>
-    <h4 class="exercise"><span class="bold">Exercise:</span> Prove (p ∧ q) ∨ (r ∧ p).</h4>
+    <h4 class="exercise"><span class="bold">Exercise:</span> Prove (p ∧ q) ∨ (r ∧ p).
+      <p></p>
+      <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20r%20%3A%20Prop%29%20%28h%20%3A%20%28p%20%E2%88%A7%20q%29%20%E2%88%A8%20%28r%20%E2%88%A7%20p%29%29%20%3A%20p%20%3A%3D%20%0A%0Abegin%0A%0A%20%20sorry%0A%0Aend%0A%0A%20"
+      target = "_blank" previous">Try in Lean</a>
+      <pre><code class="language-html"><span class="hljs-sorry">example</span> (p q r : <span class="hljs-sorry">Prop</span>) (h : (p ∧ q) ∨ (r ∧ p)) : p := </code></pre>
+      </h4>
     <p></p>
 
     <h4 class="exercise"><span class="bold"><button onclick="myFunction()" id="myBtn">Reveal Solution</button></span><span id="dots"> ...</span>
@@ -369,7 +374,21 @@ function myFunction1() {
             </ul>
 <p></p>
 In both cases, p is derived, showing that it follows from the given assumption (p ∧ q) ∨ (r ∧ p).
-        </div></p></h4>
+
+<pre><code class="language-html"></code><span class="hljs-sorry">begin</span>
+    
+ <span class="hljs-sorry">have</span> h₁ : (p ∧ q) → p,
+  { <span class="hljs-sorry">assume</span> k : p ∧ q,
+    <span class="hljs-sorry">show</span> p, <span class="hljs-sorry">from</span> k.left, },
+
+  <span class="hljs-sorry">have</span> h₂ : (r ∧ p) → p,
+  { <span class="hljs-sorry">assume</span> k : r ∧ p,
+     <span class="hljs-sorry">show</span> p, <span class="hljs-sorry">from</span> k.right, },
+
+  <span class="hljs-sorry">show</span> p, <span class="hljs-sorry">from</span> or.elim h h₁ h₂,
+
+ <span class="hljs-sorry">end</span></code></pre>
+</div></p></h4>
        
 
 <script>

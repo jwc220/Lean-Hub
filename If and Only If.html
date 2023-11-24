@@ -343,7 +343,11 @@ h4 {
 <span class="hljs-sorry">end</span></code></pre>
     </h4>
     <p></p>
-    <h4 class="exercise"><span class="bold">Exercise:</span> Let p and q be propositions. Then (p ∨ q) ↔ (q ∨ p)</h4>
+    <h4 class="exercise"><span class="bold">Exercise:</span> Let p and q be propositions. Then (p ∨ q) ↔ (q ∨ p)
+      <p></p>
+      <a class = "inlean" href="https://leanprover-community.github.io/lean-web-editor/#code=example%20%28p%20q%20r%20%3A%20Prop%29%20%28h%20%3A%20p%20%E2%86%94%20%28q%20%E2%88%A7%20r%29%29%20%28k%20%3A%20p%29%20%3A%20q%20%3A%3D%20%0A%0Abegin%20%0A%0A%20%20sorry%0A%20%20%0Aend%20%0A"
+      target = "_blank" previous">Try in Lean</a>
+      <pre><code class="language-html"><span class="hljs-sorry">example</span> (p q r : <span class="hljs-sorry">Prop</span>) (h : p ↔ (q ∧ r)) (k : p) : q := </code></pre></h4>
     <p></p>
 
     <h4 class="exercise"><span class="bold"><button onclick="myFunction()" id="myBtn">Reveal Solution</button></span><span id="dots"> ...</span>
@@ -356,9 +360,15 @@ h4 {
             <p></p>
             <il><span class="bold">Combining Cases:</span>  Solution follows using IFF Introduction on h1 and h2</il>
         </ul>
-    </div></p></h4>
-       
+        <p></p>
+<pre><code class="language-html"></code><span class="hljs-sorry">begin</span>
+    
+  <span class="hljs-sorry">have</span> h₁ : q ∧ r := iff.elim_left h k,
+    exact and.elim_left h₁, 
+         
+<span class="hljs-sorry">end</span></code></pre>
 
+    </div></p></h4>
 <script>
 function myFunction() {
   var dots = document.getElementById("dots");
